@@ -11,7 +11,7 @@
 	
 	String sql = "DELETE FROM MENU_INFO WHERE MI_NUM=?";
 	PreparedStatement ps = con.prepareStatement(sql);
-	ps.setString(41,miNum);
+	ps.setString(1,miNum);
 	
 	int result = ps.executeUpdate();
 	
