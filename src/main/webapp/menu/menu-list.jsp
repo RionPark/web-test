@@ -11,6 +11,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+String miName = request.getParameter("miName") == null ? "": request.getParameter("miName");
+%>
+<form>
+	<input type="text" name="miName" value="<%=miName%>"><button>검색</button>
+</form>
 <table border="1">
 	<tr>
 		<th>번호</th>
@@ -19,8 +25,14 @@
 	</tr>
 <%
 Connection con = DBCon.getCon();
-String sql = "SELECT MI_NUM,MI_NAME, MI_PRICE, MI_DESC FROM MENU_INFO";
+String sql = "SELECT MI_NUM,MI_NAME, MI_PRICE, MI_DESC FROM MENU_INFO ";
+if(miName != null && !miName.equals("")){
+	sql += " WHERE MI_NAME LIKE ?";
+}
 PreparedStatement ps = con.prepareStatement(sql);
+if(miName != null && !miName.equals("")){
+	ps.setString(1,"%" + miName + "%");
+}
 ResultSet rs = ps.executeQuery();
 while(rs.next()){
 %>
