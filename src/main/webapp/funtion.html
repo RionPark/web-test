@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div onclick="f(event, this)" id="fDiv">
+	<div id="sDiv">haha1</div>
+</div>
+<div onclick="f(event, this)">haha2</div>
+<script>
+function f(obj){
+	console.log(obj.innerHTML);
+}
+
+</script>
+</body>
+</html>

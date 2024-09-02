@@ -21,7 +21,6 @@ public class DBCon {
 		}
 
 	}
-	
 	public static Connection getCon() {
 		Connection con = null;
 		try {
