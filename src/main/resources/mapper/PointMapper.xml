@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rest.test.mapper.PointMapper">
+	<insert id="insertPoint">
+		INSERT INTO POINT_INFO(PI_POINT, PI_TYPE, UI_NUM)
+		VALUES(#{piPoint}, #{piType}, #{uiNum})
+	</insert>
+</mapper>

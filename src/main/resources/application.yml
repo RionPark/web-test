@@ -1,0 +1,27 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: sp
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+  datasource:
+    driver-class-name: net.sf.log4jdbc.DriverSpy
+    url: jdbc:log4jdbc:mariadb://52.78.237.145:3306/chat
+    username: admin
+    password: qwer!@#$
+    hikari:
+      connection-init-sql: SELECT 1
+      minimum-idle: 2
+      maximum-pool-size: 4
+
+
+logging:
+  config: classpath:log4j.xml
+mybatis:
+  mapper-locations: mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
