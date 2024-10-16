@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rest.test.mapper.MovieMapper">
+
+	<select id="selectMovies" resultType="com.rest.test.vo.MovieVO">
+		SELECT * 
+		FROM MOVIE_INFO
+	</select>
+	<select id="selectMovie" resultType="com.rest.test.vo.MovieVO">
+		SELECT * 
+		FROM MOVIE_INFO
+		WHERE MI_NUM=#{miNum}
+	</select>
+	<insert id="insertMovie">
+		INSERT INTO MOVIE_INFO(MI_NAME, MI_DESC, MI_START)
+		VALUES(#{miName}, #{miDesc}, #{miStart})
+	</insert>
+	<update id="updateMovie">
+		UPDATE MOVIE_INFO
+		SET MI_NAME=#{miName},
+		MI_DESC=#{miDesc},
+		MI_START=#{miStart}
+		WHERE MI_NUM=#{miNum}
+	</update>
+	<delete id="deleteMovie">
+		DELETE FROM MOVIE_INFO
+		WHERE MI_NUM=#{miNum}
+	</delete>
+</mapper>
