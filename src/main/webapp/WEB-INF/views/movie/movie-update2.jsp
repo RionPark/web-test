@@ -11,8 +11,24 @@
 <input type="text" id="miDesc" value="${movie.miDesc}"><br>
 <input type="text" id="miStart" value="${movie.miStart}"><br>
 <button onclick="modifyMovie()">수정</button>
+<button onclick="removeMovie()">삭제</button>
 
 <script>
+function removeMovie(){
+	const xhr = new XMLHttpRequest();
+	xhr.open('DELETE','/movies/${param.miNum}');
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState === xhr.DONE){
+			if(xhr.status === 200){
+				if(xhr.responseText === '1'){
+					alert('삭제 완료!');
+					location.href='/views/movie/movie-list2';
+				}
+			}
+		}
+	}
+	xhr.send();
+}
 window.onload = function(){
 
 	const xhr = new XMLHttpRequest();
@@ -21,7 +37,11 @@ window.onload = function(){
 		if(xhr.readyState === xhr.DONE){
 			if(xhr.status === 200){
 				const movie = JSON.parse(xhr.responseText);
-				console.log(movie);
+				for(const id in movie){
+					if(document.querySelector('#'+id)){
+						document.querySelector('#'+id).value = movie[id];
+					}
+				}
 			}
 		}
 	}
@@ -29,6 +49,7 @@ window.onload = function(){
 }
 function modifyMovie(){
 	const param = {
+			miNum : ${param.miNum},
 			miName : document.querySelector('#miName').value,
 			miDesc : document.querySelector('#miDesc').value,
 			miStart : document.querySelector('#miStart').value
@@ -38,11 +59,15 @@ function modifyMovie(){
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState === xhr.DONE){
 			if(xhr.status === 200){
-				
+				if(xhr.responseText === '1'){
+					alert('수정완료');
+					location.href='/views/movie/movie-list2';
+				}
 			}
 		}
 	}
-	xhr.send();
+	xhr.setRequestHeader('Content-Type','application/json');
+	xhr.send(JSON.stringify(param));
 }
 </script>
 </body>

@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -60,6 +62,30 @@ public class MovieController {
 		}
 		return "views/msg";
 	}
+	
+	@PostMapping("/movie-delete")
+	public String removeMovie(@ModelAttribute MovieVO movie, Model m) {
+		m.addAttribute("msg","실패");
+		m.addAttribute("url","/movie/" + movie.getMiNum());
+		if(ms.deleteMovie(movie.getMiNum())==1) {
+			m.addAttribute("msg","성공");
+			m.addAttribute("url","/movies");
+		}
+		return "views/msg";
+	}
+	
+	@DeleteMapping("/movies/{miNum}")
+	@ResponseBody
+	public int removeMovie2(@PathVariable int miNum) {
+		return ms.deleteMovie(miNum);
+	}
+	
+	@PutMapping("/movies")
+	@ResponseBody
+	public int modifyMovie2(@RequestBody MovieVO movie) {
+		return ms.updateMovie(movie);
+	}
+	
 	@PostMapping("/movies")
 	public String addMovie(@ModelAttribute MovieVO movie, Model m) {
 		m.addAttribute("msg","실패");

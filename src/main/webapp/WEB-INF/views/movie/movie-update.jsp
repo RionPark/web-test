@@ -13,6 +13,13 @@
 	<input type="text" name="miDesc" value="${movie.miDesc}"><br>
 	<input type="text" name="miStart" value="${movie.miStart}"><br>
 	<button>수정</button>
+	<button type="button" onclick="removeMovie(this.form)">삭제</button>
 </form>
+<script>
+function removeMovie(frm){
+	frm.action='/movie-delete';
+	frm.submit();
+}
+</script>
 </body>
 </html>
