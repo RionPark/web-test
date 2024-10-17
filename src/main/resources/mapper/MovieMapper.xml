@@ -22,8 +22,28 @@
 		MI_START=#{miStart}
 		WHERE MI_NUM=#{miNum}
 	</update>
+	
+	<update id="updateMovies">
+		<foreach collection="movies" item="movie" separator=";" open="" close="">
+			UPDATE MOVIE_INFO
+			SET MI_NAME=#{movie.miName},
+			MI_DESC=#{movie.miDesc},
+			MI_START=#{movie.miStart}
+			WHERE MI_NUM=#{movie.miNum}
+		</foreach>
+	</update>
 	<delete id="deleteMovie">
 		DELETE FROM MOVIE_INFO
 		WHERE MI_NUM=#{miNum}
+	</delete>
+	<delete id="deleteMovies">
+		DELETE FROM MOVIE_INFO
+		<where>
+			<if test='miNums != null and miNums.size()>0'>
+				<foreach collection="miNums" item="miNum" open="(" close=")" separator=" OR ">
+					MI_NUM=#{miNum}
+				</foreach>
+			</if>
+		</where>
 	</delete>
 </mapper>

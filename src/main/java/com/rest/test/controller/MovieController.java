@@ -79,11 +79,22 @@ public class MovieController {
 	public int removeMovie2(@PathVariable int miNum) {
 		return ms.deleteMovie(miNum);
 	}
+
+	@DeleteMapping("/movies2")
+	@ResponseBody
+	public int removeMovies2(@RequestBody List<Integer> miNums) {
+		return ms.deleteMovies(miNums);
+	}
 	
 	@PutMapping("/movies")
 	@ResponseBody
 	public int modifyMovie2(@RequestBody MovieVO movie) {
 		return ms.updateMovie(movie);
+	}
+	@PutMapping("/movies2")
+	@ResponseBody
+	public int modifyMovies(@RequestBody List<MovieVO> movies) {
+		return ms.updateMovies(movies);
 	}
 	
 	@PostMapping("/movies")
