@@ -16,6 +16,7 @@
 <button onclick="search()">검색</button>
 <table border="1">
 	<tr>
+		<th><input type="checkbox" id="allCheck"></th>
 		<th>번호</th>
 		<th>영화명</th>
 		<th>개봉일</th>

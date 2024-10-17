@@ -10,7 +10,7 @@ spring:
       suffix: .jsp
   datasource:
     driver-class-name: net.sf.log4jdbc.DriverSpy
-    url: jdbc:log4jdbc:mariadb://52.78.237.145:3306/chat2
+    url: jdbc:log4jdbc:mariadb://52.78.237.145:3306/chat
     username: admin
     password: qwer!@#$
     hikari:

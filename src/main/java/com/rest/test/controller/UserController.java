@@ -43,12 +43,14 @@ public class UserController {
 	@PostMapping("/user/join")
 	@ResponseBody
 	public int join(@RequestBody UserVO user) {
+		/*
+		 * Read   = SELECT
+		 * 
+		 * Create = INSERT
+		 * Update = UPDATE
+		 * Delete = DELETE
+		 */
 		us.insertUser(user);
-		PointVO point  = new PointVO();
-		point.setPiPoint(1000);
-		point.setPiType("JOIN13213213132132132131");
-		point.setUiNum(user.getUiNum());
-		ps.insertPoint(point);
 		return 0;
 	}
 }
