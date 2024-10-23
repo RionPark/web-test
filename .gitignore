@@ -38,3 +38,4 @@ out/
 /logs/
 /gradle/
 application.yml
+/.apt_generated_tests/

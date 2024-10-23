@@ -1,5 +1,6 @@
 package com.rest.test.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.rest.test.mapper.MovieMapper;
 import com.rest.test.vo.MovieVO;
-import com.rest.test.vo.TestVO;
 
-@Service
-public class MovieService {
+@Service("movieService")
+public class MovieService{
 
 	@Autowired
 	private MovieMapper mm;

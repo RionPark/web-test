@@ -22,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 public class MovieController {
+
 	@Autowired
 	private MovieService ms;
 
@@ -48,7 +49,7 @@ public class MovieController {
 	@GetMapping("/movies2")
 	@ResponseBody
 	public List<MovieVO> getMovies2(@ModelAttribute MovieVO movie){
-		log.info("movie=>{}", movie);
+
 		List<MovieVO> movies = ms.selectMovies(movie);
 		return movies;
 	}
