@@ -34,4 +34,8 @@
 	<delete id="deleteUser">
 		DELETE FROM USER_INFO WHERE UI_NUM=#{uiNum}
 	</delete>
+	
+	<select id="selectRowCount" resultType="int">
+		SELECT ROW_COUNT()
+	</select>
 </mapper>
